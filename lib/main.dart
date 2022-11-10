@@ -1,7 +1,9 @@
+import 'package:edaya_errand/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'application/onboard/onboard_bloc.dart';
-import 'presentation/onboarding/onboarding_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'feature/onboard/presentation/onboard_bloc/onboard_bloc.dart';
+import 'feature/onboard/presentation/onboard_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,9 +16,22 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => OnboardBloc()),
       ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: OnboardingScreen(),
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp(
+            navigatorKey: Routes.navigatorKey,
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              textTheme: TextTheme(
+                button: TextStyle(fontSize: 45.sp),
+              ),
+            ),
+            home: const OnboardingScreen(),
+          );
+        },
       ),
     );
   }
