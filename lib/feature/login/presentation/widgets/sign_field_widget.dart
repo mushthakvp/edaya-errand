@@ -26,10 +26,12 @@ class SignifiedWidget extends StatelessWidget {
             children: [
               SizedBox(height: size.height * .06.h),
               TextFormField(
-                controller: LoginFunction().emailController,
+                controller: LoginFunction.emailController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Enter valid email';
+                  } else if (value != "testapp@google.com") {
+                    return "enter correct mail eg :- testapp@google.com";
                   }
                   return null;
                 },
@@ -38,12 +40,12 @@ class SignifiedWidget extends StatelessWidget {
               ),
               SizedBox(height: 15.h),
               TextFormField(
-                controller: LoginFunction().passwordController,
+                controller: LoginFunction.passwordController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Enter valid password';
-                  } else if (value != "testapp@google.com") {
-                    return "enter correct password eg :- testapp@google.com";
+                  } else if (value != "Test@123456") {
+                    return "enter correct password eg :- Test@123456";
                   }
                   return null;
                 },
@@ -59,6 +61,9 @@ class SignifiedWidget extends StatelessWidget {
               ),
               SizedBox(height: 15.h),
               InkWell(
+                onTap: () {
+                  LoginFunction().checkPAssword();
+                },
                 focusColor: Colors.white,
                 hoverColor: Colors.white,
                 child: Container(
