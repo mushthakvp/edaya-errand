@@ -7,16 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import 'feature/onboard/presentation/onboard_bloc/onboard_bloc.dart';
 import 'feature/onboard/presentation/onboard_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureInjection();
+
   await Hive.initFlutter();
   if (!Hive.isAdapterRegistered(UserModelAdapter().typeId)) {
     Hive.registerAdapter(UserModelAdapter());
   }
+  await configureInjection();
   runApp(const MyApp());
 }
 
