@@ -55,12 +55,10 @@ class LoginBody extends StatelessWidget {
               ),
             ),
             SizedBox(height: size.height * .06.h),
-           SignifiedWidget(size : size)
+            SignifiedWidget(size: size)
           ],
         ),
       ),
     );
   }
-
-  
 }

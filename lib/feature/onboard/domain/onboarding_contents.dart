@@ -32,7 +32,6 @@ List<OnboardingContents> contents = [
   ),
 ];
 
-int currentPage = 0;
 List colors = const [
   Color(0xffDAD3C8),
   Color(0xffFFE5DE),
