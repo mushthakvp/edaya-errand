@@ -10,6 +10,7 @@ part 'home_bloc.freezed.dart';
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HiveImplementation hiveimpl;
+
   HomeBloc(this.hiveimpl) : super(HomeState.initial()) {
     on<_FetchDetails>((event, emit) async {
       if (state.userList.isNotEmpty) {
